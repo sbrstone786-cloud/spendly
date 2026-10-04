@@ -2,7 +2,16 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Plus, Trash2, Calendar, DollarSign, CreditCard, AlertCircle } from "lucide-react";
+import {
+  Plus,
+  Trash2,
+  Calendar,
+  DollarSign,
+  CreditCard,
+  AlertCircle,
+  Pencil,
+  Wallet,
+} from "lucide-react";
 
 type Subscription = {
   id: string;
@@ -16,6 +25,7 @@ type Subscription = {
 export default function Dashboard() {
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
   const [showForm, setShowForm] = useState(false);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     cost: "",
@@ -24,15 +34,13 @@ export default function Dashboard() {
     category: "",
   });
 
-  // Load from localStorage
+  // Load data
   useEffect(() => {
     const saved = localStorage.getItem("spendly-subscriptions");
-    if (saved) {
-      setSubscriptions(JSON.parse(saved));
-    }
+    if (saved) setSubscriptions(JSON.parse(saved));
   }, []);
 
-  // Save to localStorage
+  // Save data
   useEffect(() => {
     localStorage.setItem("spendly-subscriptions", JSON.stringify(subscriptions));
   }, [subscriptions]);
@@ -43,49 +51,91 @@ export default function Dashboard() {
 
   const yearlyTotal = monthlyTotal * 12;
 
-  // Upcoming renewals (next 30 days)
   const today = new Date();
   const upcoming = subscriptions
     .filter((sub) => {
       const renewalDate = new Date(sub.nextRenewal);
-      const diffTime = renewalDate.getTime() - today.getTime();
-      const diffDays = diffTime / (1000 * 60 * 60 * 24);
+      const diffDays = (renewalDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24);
       return diffDays >= 0 && diffDays <= 30;
     })
     .sort((a, b) => new Date(a.nextRenewal).getTime() - new Date(b.nextRenewal).getTime());
 
-  const handleAdd = () => {
+  const openAddForm = () => {
+    setEditingId(null);
+    setFormData({
+      name: "",
+      cost: "",
+      billingCycle: "monthly",
+      nextRenewal: "",
+      category: "",
+    });
+    setShowForm(true);
+  };
+
+  const openEditForm = (sub: Subscription) => {
+    setEditingId(sub.id);
+    setFormData({
+      name: sub.name,
+      cost: sub.cost.toString(),
+      billingCycle: sub.billingCycle,
+      nextRenewal: sub.nextRenewal,
+      category: sub.category,
+    });
+    setShowForm(true);
+  };
+
+  const handleSave = () => {
     if (!formData.name || !formData.cost || !formData.nextRenewal) return;
 
-    const newSub: Subscription = {
-      id: Date.now().toString(),
-      name: formData.name,
-      cost: parseFloat(formData.cost),
-      billingCycle: formData.billingCycle as "monthly" | "yearly",
-      nextRenewal: formData.nextRenewal,
-      category: formData.category || "Other",
-    };
+    if (editingId) {
+      setSubscriptions(
+        subscriptions.map((sub) =>
+          sub.id === editingId
+            ? {
+                ...sub,
+                name: formData.name,
+                cost: parseFloat(formData.cost),
+                billingCycle: formData.billingCycle as "monthly" | "yearly",
+                nextRenewal: formData.nextRenewal,
+                category: formData.category || "Other",
+              }
+            : sub
+        )
+      );
+    } else {
+      const newSub: Subscription = {
+        id: Date.now().toString(),
+        name: formData.name,
+        cost: parseFloat(formData.cost),
+        billingCycle: formData.billingCycle as "monthly" | "yearly",
+        nextRenewal: formData.nextRenewal,
+        category: formData.category || "Other",
+      };
+      setSubscriptions([...subscriptions, newSub]);
+    }
 
-    setSubscriptions([...subscriptions, newSub]);
-    setFormData({ name: "", cost: "", billingCycle: "monthly", nextRenewal: "", category: "" });
     setShowForm(false);
+    setEditingId(null);
   };
 
   const handleDelete = (id: string) => {
-    setSubscriptions(subscriptions.filter((sub) => sub.id !== id));
+    if (confirm("Are you sure you want to delete this subscription?")) {
+      setSubscriptions(subscriptions.filter((sub) => sub.id !== id));
+    }
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navbar */}
       <nav className="bg-white border-b sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="font-bold text-xl text-gray-900">
+        <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-gray-900">
+            <Wallet size={22} />
             Spendly
           </Link>
           <button
-            onClick={() => setShowForm(true)}
-            className="flex items-center gap-2 bg-black text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-gray-800 transition"
+            onClick={openAddForm}
+            className="flex items-center gap-2 bg-black text-white text-sm font-medium px-4 py-2.5 rounded-xl hover:bg-gray-800 transition"
           >
             <Plus size={16} />
             Add Subscription
@@ -93,41 +143,41 @@ export default function Dashboard() {
         </div>
       </nav>
 
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        {/* Stats Cards */}
+      <div className="max-w-5xl mx-auto px-4 py-8">
+        {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-          <div className="bg-white p-6 rounded-2xl border shadow-sm">
+          <div className="bg-white p-5 rounded-2xl border shadow-sm">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-11 h-11 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
                 <DollarSign size={20} />
               </div>
               <div>
                 <p className="text-sm text-gray-500">Monthly Spend</p>
-                <p className="text-2xl font-bold">${monthlyTotal.toFixed(0)}</p>
+                <p className="text-2xl font-bold tracking-tight">${monthlyTotal.toFixed(0)}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl border shadow-sm">
+          <div className="bg-white p-5 rounded-2xl border shadow-sm">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-green-100 text-green-600 rounded-lg flex items-center justify-center">
+              <div className="w-11 h-11 bg-green-50 text-green-600 rounded-xl flex items-center justify-center">
                 <CreditCard size={20} />
               </div>
               <div>
                 <p className="text-sm text-gray-500">Yearly Spend</p>
-                <p className="text-2xl font-bold">${yearlyTotal.toFixed(0)}</p>
+                <p className="text-2xl font-bold tracking-tight">${yearlyTotal.toFixed(0)}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl border shadow-sm">
+          <div className="bg-white p-5 rounded-2xl border shadow-sm">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center">
+              <div className="w-11 h-11 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center">
                 <Calendar size={20} />
               </div>
               <div>
                 <p className="text-sm text-gray-500">Active Tools</p>
-                <p className="text-2xl font-bold">{subscriptions.length}</p>
+                <p className="text-2xl font-bold tracking-tight">{subscriptions.length}</p>
               </div>
             </div>
           </div>
@@ -135,19 +185,24 @@ export default function Dashboard() {
 
         {/* Upcoming Renewals */}
         {upcoming.length > 0 && (
-          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-8">
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-8">
             <div className="flex items-center gap-2 mb-4">
-              <AlertCircle className="text-amber-600" size={20} />
-              <h2 className="font-semibold text-lg text-amber-900">Upcoming Renewals (Next 30 Days)</h2>
+              <AlertCircle className="text-amber-600" size={18} />
+              <h2 className="font-semibold text-amber-900">
+                Upcoming Renewals (Next 30 Days)
+              </h2>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-2">
               {upcoming.map((sub) => (
-                <div key={sub.id} className="flex items-center justify-between bg-white rounded-lg px-4 py-3">
+                <div
+                  key={sub.id}
+                  className="flex items-center justify-between bg-white rounded-xl px-4 py-3"
+                >
                   <div>
-                    <div className="font-medium">{sub.name}</div>
-                    <div className="text-sm text-gray-500">{sub.nextRenewal}</div>
+                    <div className="font-medium text-sm">{sub.name}</div>
+                    <div className="text-xs text-gray-500">{sub.nextRenewal}</div>
                   </div>
-                  <div className="font-semibold text-amber-700">${sub.cost}</div>
+                  <div className="font-semibold text-amber-700 text-sm">${sub.cost}</div>
                 </div>
               ))}
             </div>
@@ -156,38 +211,64 @@ export default function Dashboard() {
 
         {/* Subscriptions List */}
         <div className="bg-white rounded-2xl border shadow-sm overflow-hidden">
-          <div className="px-6 py-4 border-b">
+          <div className="px-5 py-4 border-b flex items-center justify-between">
             <h2 className="font-semibold text-lg">Your Subscriptions</h2>
+            <span className="text-sm text-gray-500">{subscriptions.length} tools</span>
           </div>
 
           {subscriptions.length === 0 ? (
-            <div className="p-12 text-center text-gray-500">
-              No subscriptions yet. Add your first one!
+            <div className="p-16 text-center">
+              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Wallet className="text-gray-400" size={28} />
+              </div>
+              <h3 className="font-medium text-gray-900 mb-1">No subscriptions yet</h3>
+              <p className="text-sm text-gray-500 mb-6">
+                Start tracking your SaaS tools to see where your money is going.
+              </p>
+              <button
+                onClick={openAddForm}
+                className="inline-flex items-center gap-2 bg-black text-white text-sm font-medium px-5 py-2.5 rounded-xl hover:bg-gray-800 transition"
+              >
+                <Plus size={16} />
+                Add your first subscription
+              </button>
             </div>
           ) : (
             <div className="divide-y">
               {subscriptions.map((sub) => (
                 <div
                   key={sub.id}
-                  className="px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition"
+                  className="px-5 py-4 flex items-center justify-between hover:bg-gray-50 transition"
                 >
-                  <div>
-                    <div className="font-medium">{sub.name}</div>
+                  <div className="min-w-0">
+                    <div className="font-medium truncate">{sub.name}</div>
                     <div className="text-sm text-gray-500">
-                      {sub.category} · Next renewal: {sub.nextRenewal}
+                      {sub.category} · Renews {sub.nextRenewal}
                     </div>
                   </div>
-                  <div className="flex items-center gap-4">
+
+                  <div className="flex items-center gap-4 ml-4">
                     <div className="text-right">
                       <div className="font-semibold">${sub.cost}</div>
                       <div className="text-xs text-gray-500">/{sub.billingCycle}</div>
                     </div>
-                    <button
-                      onClick={() => handleDelete(sub.id)}
-                      className="text-gray-400 hover:text-red-500 transition"
-                    >
-                      <Trash2 size={18} />
-                    </button>
+
+                    <div className="flex items-center gap-1">
+                      <button
+                        onClick={() => openEditForm(sub)}
+                        className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
+                        title="Edit"
+                      >
+                        <Pencil size={16} />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(sub.id)}
+                        className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition"
+                        title="Delete"
+                      >
+                        <Trash2 size={16} />
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -196,11 +277,13 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Add Subscription Modal */}
+      {/* Modal */}
       {showForm && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl w-full max-w-md p-6">
-            <h3 className="text-lg font-semibold mb-4">Add Subscription</h3>
+          <div className="bg-white rounded-2xl w-full max-w-md p-6 shadow-xl">
+            <h3 className="text-lg font-semibold mb-5">
+              {editingId ? "Edit Subscription" : "Add Subscription"}
+            </h3>
 
             <div className="space-y-4">
               <div>
@@ -209,8 +292,8 @@ export default function Dashboard() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="e.g. Notion"
-                  className="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                  placeholder="e.g. Notion, ChatGPT, Vercel"
+                  className="mt-1.5 w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
                 />
               </div>
 
@@ -221,7 +304,7 @@ export default function Dashboard() {
                   value={formData.cost}
                   onChange={(e) => setFormData({ ...formData, cost: e.target.value })}
                   placeholder="10"
-                  className="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                  className="mt-1.5 w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
                 />
               </div>
 
@@ -230,7 +313,7 @@ export default function Dashboard() {
                 <select
                   value={formData.billingCycle}
                   onChange={(e) => setFormData({ ...formData, billingCycle: e.target.value })}
-                  className="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                  className="mt-1.5 w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
                 >
                   <option value="monthly">Monthly</option>
                   <option value="yearly">Yearly</option>
@@ -243,7 +326,7 @@ export default function Dashboard() {
                   type="date"
                   value={formData.nextRenewal}
                   onChange={(e) => setFormData({ ...formData, nextRenewal: e.target.value })}
-                  className="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                  className="mt-1.5 w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
                 />
               </div>
 
@@ -253,24 +336,27 @@ export default function Dashboard() {
                   type="text"
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  placeholder="e.g. Productivity"
-                  className="mt-1 w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
+                  placeholder="e.g. Productivity, AI, Design"
+                  className="mt-1.5 w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
                 />
               </div>
             </div>
 
             <div className="mt-6 flex gap-3">
               <button
-                onClick={() => setShowForm(false)}
-                className="flex-1 border rounded-lg py-2 font-medium hover:bg-gray-50"
+                onClick={() => {
+                  setShowForm(false);
+                  setEditingId(null);
+                }}
+                className="flex-1 border border-gray-200 rounded-xl py-2.5 text-sm font-medium hover:bg-gray-50 transition"
               >
                 Cancel
               </button>
               <button
-                onClick={handleAdd}
-                className="flex-1 bg-black text-white rounded-lg py-2 font-medium hover:bg-gray-800"
+                onClick={handleSave}
+                className="flex-1 bg-black text-white rounded-xl py-2.5 text-sm font-medium hover:bg-gray-800 transition"
               >
-                Add
+                {editingId ? "Update" : "Add Subscription"}
               </button>
             </div>
           </div>
