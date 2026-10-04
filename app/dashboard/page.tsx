@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Plus, Trash2, Calendar, DollarSign, CreditCard } from "lucide-react";
+import { Plus, Trash2, Calendar, DollarSign, CreditCard, AlertCircle } from "lucide-react";
 
 type Subscription = {
   id: string;
@@ -42,6 +42,17 @@ export default function Dashboard() {
   }, 0);
 
   const yearlyTotal = monthlyTotal * 12;
+
+  // Upcoming renewals (next 30 days)
+  const today = new Date();
+  const upcoming = subscriptions
+    .filter((sub) => {
+      const renewalDate = new Date(sub.nextRenewal);
+      const diffTime = renewalDate.getTime() - today.getTime();
+      const diffDays = diffTime / (1000 * 60 * 60 * 24);
+      return diffDays >= 0 && diffDays <= 30;
+    })
+    .sort((a, b) => new Date(a.nextRenewal).getTime() - new Date(b.nextRenewal).getTime());
 
   const handleAdd = () => {
     if (!formData.name || !formData.cost || !formData.nextRenewal) return;
@@ -121,6 +132,27 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
+
+        {/* Upcoming Renewals */}
+        {upcoming.length > 0 && (
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 mb-8">
+            <div className="flex items-center gap-2 mb-4">
+              <AlertCircle className="text-amber-600" size={20} />
+              <h2 className="font-semibold text-lg text-amber-900">Upcoming Renewals (Next 30 Days)</h2>
+            </div>
+            <div className="space-y-3">
+              {upcoming.map((sub) => (
+                <div key={sub.id} className="flex items-center justify-between bg-white rounded-lg px-4 py-3">
+                  <div>
+                    <div className="font-medium">{sub.name}</div>
+                    <div className="text-sm text-gray-500">{sub.nextRenewal}</div>
+                  </div>
+                  <div className="font-semibold text-amber-700">${sub.cost}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Subscriptions List */}
         <div className="bg-white rounded-2xl border shadow-sm overflow-hidden">
