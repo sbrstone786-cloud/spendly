@@ -152,71 +152,71 @@ export default function Dashboard() {
     <div className="min-h-screen bg-gray-50">
       {/* Navbar */}
       <nav className="bg-white border-b sticky top-0 z-50">
-        <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-gray-900">
-            <Wallet size={22} />
+        <div className="max-w-5xl mx-auto px-4 h-14 sm:h-16 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 font-bold text-lg sm:text-xl text-gray-900">
+            <Wallet size={20} />
             Spendly
           </Link>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <Link
               href="/pricing"
-              className="text-sm font-medium text-gray-600 hover:text-gray-900"
+              className="hidden sm:block text-sm font-medium text-gray-600 hover:text-gray-900"
             >
               Pricing
             </Link>
             <button
               onClick={handleExport}
-              className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-900 border px-3 py-2 rounded-xl hover:bg-gray-50 transition"
+              className="flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 border px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg sm:rounded-xl hover:bg-gray-50 transition"
             >
-              <Download size={16} />
-              Export
+              <Download size={15} />
+              <span className="hidden sm:inline">Export</span>
             </button>
             <button
               onClick={openAddForm}
-              className="flex items-center gap-2 bg-black text-white text-sm font-medium px-4 py-2.5 rounded-xl hover:bg-gray-800 transition"
+              className="flex items-center gap-1.5 bg-black text-white text-sm font-medium px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-lg sm:rounded-xl hover:bg-gray-800 transition"
             >
-              <Plus size={16} />
-              Add
+              <Plus size={15} />
+              <span className="hidden sm:inline">Add</span>
             </button>
           </div>
         </div>
       </nav>
 
-      <div className="max-w-5xl mx-auto px-4 py-8">
+      <div className="max-w-5xl mx-auto px-4 py-6 sm:py-8">
         {/* Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-          <div className="bg-white p-5 rounded-2xl border shadow-sm">
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
-                <DollarSign size={20} />
+        <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+          <div className="bg-white p-3 sm:p-5 rounded-xl sm:rounded-2xl border shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+              <div className="w-9 h-9 sm:w-11 sm:h-11 bg-blue-50 text-blue-600 rounded-lg sm:rounded-xl flex items-center justify-center">
+                <DollarSign size={18} />
               </div>
               <div>
-                <p className="text-sm text-gray-500">Monthly Spend</p>
-                <p className="text-2xl font-bold tracking-tight">${monthlyTotal.toFixed(0)}</p>
+                <p className="text-xs sm:text-sm text-gray-500">Monthly</p>
+                <p className="text-lg sm:text-2xl font-bold tracking-tight">${monthlyTotal.toFixed(0)}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border shadow-sm">
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 bg-green-50 text-green-600 rounded-xl flex items-center justify-center">
-                <CreditCard size={20} />
+          <div className="bg-white p-3 sm:p-5 rounded-xl sm:rounded-2xl border shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+              <div className="w-9 h-9 sm:w-11 sm:h-11 bg-green-50 text-green-600 rounded-lg sm:rounded-xl flex items-center justify-center">
+                <CreditCard size={18} />
               </div>
               <div>
-                <p className="text-sm text-gray-500">Yearly Spend</p>
-                <p className="text-2xl font-bold tracking-tight">${yearlyTotal.toFixed(0)}</p>
+                <p className="text-xs sm:text-sm text-gray-500">Yearly</p>
+                <p className="text-lg sm:text-2xl font-bold tracking-tight">${yearlyTotal.toFixed(0)}</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-5 rounded-2xl border shadow-sm">
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center">
-                <Calendar size={20} />
+          <div className="bg-white p-3 sm:p-5 rounded-xl sm:rounded-2xl border shadow-sm">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+              <div className="w-9 h-9 sm:w-11 sm:h-11 bg-purple-50 text-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center">
+                <Calendar size={18} />
               </div>
               <div>
-                <p className="text-sm text-gray-500">Active Tools</p>
-                <p className="text-2xl font-bold tracking-tight">{subscriptions.length}</p>
+                <p className="text-xs sm:text-sm text-gray-500">Tools</p>
+                <p className="text-lg sm:text-2xl font-bold tracking-tight">{subscriptions.length}</p>
               </div>
             </div>
           </div>
@@ -224,18 +224,18 @@ export default function Dashboard() {
 
         {/* Upcoming Renewals */}
         {upcoming.length > 0 && (
-          <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-8">
-            <div className="flex items-center gap-2 mb-4">
-              <AlertCircle className="text-amber-600" size={18} />
-              <h2 className="font-semibold text-amber-900">
-                Upcoming Renewals (Next 30 Days)
+          <div className="bg-amber-50 border border-amber-200 rounded-xl sm:rounded-2xl p-4 sm:p-5 mb-6 sm:mb-8">
+            <div className="flex items-center gap-2 mb-3 sm:mb-4">
+              <AlertCircle className="text-amber-600" size={16} />
+              <h2 className="font-semibold text-sm sm:text-base text-amber-900">
+                Upcoming Renewals
               </h2>
             </div>
             <div className="space-y-2">
               {upcoming.map((sub) => (
                 <div
                   key={sub.id}
-                  className="flex items-center justify-between bg-white rounded-xl px-4 py-3"
+                  className="flex items-center justify-between bg-white rounded-lg sm:rounded-xl px-3 sm:px-4 py-2.5 sm:py-3"
                 >
                   <div>
                     <div className="font-medium text-sm">{sub.name}</div>
@@ -249,27 +249,27 @@ export default function Dashboard() {
         )}
 
         {/* Subscriptions List */}
-        <div className="bg-white rounded-2xl border shadow-sm overflow-hidden">
-          <div className="px-5 py-4 border-b flex items-center justify-between">
-            <h2 className="font-semibold text-lg">Your Subscriptions</h2>
-            <span className="text-sm text-gray-500">{subscriptions.length} tools</span>
+        <div className="bg-white rounded-xl sm:rounded-2xl border shadow-sm overflow-hidden">
+          <div className="px-4 sm:px-5 py-3 sm:py-4 border-b flex items-center justify-between">
+            <h2 className="font-semibold text-base sm:text-lg">Your Subscriptions</h2>
+            <span className="text-xs sm:text-sm text-gray-500">{subscriptions.length} tools</span>
           </div>
 
           {subscriptions.length === 0 ? (
-            <div className="p-16 text-center">
-              <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Wallet className="text-gray-400" size={28} />
+            <div className="p-10 sm:p-16 text-center">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Wallet className="text-gray-400" size={24} />
               </div>
               <h3 className="font-medium text-gray-900 mb-1">No subscriptions yet</h3>
               <p className="text-sm text-gray-500 mb-6">
-                Start tracking your SaaS tools to see where your money is going.
+                Start tracking your SaaS tools.
               </p>
               <button
                 onClick={openAddForm}
                 className="inline-flex items-center gap-2 bg-black text-white text-sm font-medium px-5 py-2.5 rounded-xl hover:bg-gray-800 transition"
               >
                 <Plus size={16} />
-                Add your first subscription
+                Add your first
               </button>
             </div>
           ) : (
@@ -277,35 +277,33 @@ export default function Dashboard() {
               {subscriptions.map((sub) => (
                 <div
                   key={sub.id}
-                  className="px-5 py-4 flex items-center justify-between hover:bg-gray-50 transition"
+                  className="px-4 sm:px-5 py-3.5 sm:py-4 flex items-center justify-between hover:bg-gray-50 transition"
                 >
-                  <div className="min-w-0">
-                    <div className="font-medium truncate">{sub.name}</div>
-                    <div className="text-sm text-gray-500">
-                      {sub.category} · Renews {sub.nextRenewal}
+                  <div className="min-w-0 flex-1">
+                    <div className="font-medium text-sm sm:text-base truncate">{sub.name}</div>
+                    <div className="text-xs sm:text-sm text-gray-500 truncate">
+                      {sub.category} · {sub.nextRenewal}
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 ml-4">
+                  <div className="flex items-center gap-2 sm:gap-4 ml-3">
                     <div className="text-right">
-                      <div className="font-semibold">${sub.cost}</div>
-                      <div className="text-xs text-gray-500">/{sub.billingCycle}</div>
+                      <div className="font-semibold text-sm sm:text-base">${sub.cost}</div>
+                      <div className="text-xs text-gray-500">/{sub.billingCycle === "monthly" ? "mo" : "yr"}</div>
                     </div>
 
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center">
                       <button
                         onClick={() => openEditForm(sub)}
-                        className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
-                        title="Edit"
+                        className="p-1.5 sm:p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition"
                       >
-                        <Pencil size={16} />
+                        <Pencil size={15} />
                       </button>
                       <button
                         onClick={() => handleDelete(sub.id)}
-                        className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition"
-                        title="Delete"
+                        className="p-1.5 sm:p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition"
                       >
-                        <Trash2 size={16} />
+                        <Trash2 size={15} />
                       </button>
                     </div>
                   </div>
@@ -318,8 +316,8 @@ export default function Dashboard() {
 
       {/* Modal */}
       {showForm && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl w-full max-w-md p-6 shadow-xl">
+        <div className="fixed inset-0 bg-black/50 flex items-end sm:items-center justify-center z-50 p-0 sm:p-4">
+          <div className="bg-white rounded-t-2xl sm:rounded-2xl w-full max-w-md p-5 sm:p-6 shadow-xl">
             <h3 className="text-lg font-semibold mb-5">
               {editingId ? "Edit Subscription" : "Add Subscription"}
             </h3>
@@ -331,7 +329,7 @@ export default function Dashboard() {
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="e.g. Notion, ChatGPT, Vercel"
+                  placeholder="e.g. Notion, ChatGPT"
                   className="mt-1.5 w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
                 />
               </div>
@@ -375,7 +373,7 @@ export default function Dashboard() {
                   type="text"
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  placeholder="e.g. Productivity, AI, Design"
+                  placeholder="e.g. Productivity, AI"
                   className="mt-1.5 w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
                 />
               </div>
@@ -395,7 +393,7 @@ export default function Dashboard() {
                 onClick={handleSave}
                 className="flex-1 bg-black text-white rounded-xl py-2.5 text-sm font-medium hover:bg-gray-800 transition"
               >
-                {editingId ? "Update" : "Add Subscription"}
+                {editingId ? "Update" : "Add"}
               </button>
             </div>
           </div>
