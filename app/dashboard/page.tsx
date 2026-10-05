@@ -127,21 +127,29 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navbar */}
-      <nav className="bg-white border-b sticky top-0 z-50">
-        <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-gray-900">
-            <Wallet size={22} />
-            Spendly
-          </Link>
-          <button
-            onClick={openAddForm}
-            className="flex items-center gap-2 bg-black text-white text-sm font-medium px-4 py-2.5 rounded-xl hover:bg-gray-800 transition"
-          >
-            <Plus size={16} />
-            Add Subscription
-          </button>
-        </div>
-      </nav>
+<nav className="bg-white border-b sticky top-0 z-50">
+  <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+    <Link href="/" className="flex items-center gap-2 font-bold text-xl text-gray-900">
+      <Wallet size={22} />
+      Spendly
+    </Link>
+    <div className="flex items-center gap-4">
+      <Link
+        href="/pricing"
+        className="text-sm font-medium text-gray-600 hover:text-gray-900"
+      >
+        Pricing
+      </Link>
+      <button
+        onClick={openAddForm}
+        className="flex items-center gap-2 bg-black text-white text-sm font-medium px-4 py-2.5 rounded-xl hover:bg-gray-800 transition"
+      >
+        <Plus size={16} />
+        Add Subscription
+      </button>
+    </div>
+  </div>
+</nav>
 
       <div className="max-w-5xl mx-auto px-4 py-8">
         {/* Stats */}
