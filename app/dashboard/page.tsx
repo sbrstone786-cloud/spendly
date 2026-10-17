@@ -26,6 +26,7 @@ type Subscription = {
 
 export default function Dashboard() {
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
@@ -37,13 +38,13 @@ export default function Dashboard() {
   });
 
   useEffect(() => {
-    const saved = localStorage.getItem("spendly-subscriptions");
-    if (saved) setSubscriptions(JSON.parse(saved));
-  }, []);
+  const saved = localStorage.getItem("spendly-subscriptions");
+  if (saved) setSubscriptions(JSON.parse(saved));
+}, []);
 
-  useEffect(() => {
-    localStorage.setItem("spendly-subscriptions", JSON.stringify(subscriptions));
-  }, [subscriptions]);
+useEffect(() => {
+  localStorage.setItem("spendly-subscriptions", JSON.stringify(subscriptions));
+}, [subscriptions]);
 
   const monthlyTotal = subscriptions.reduce((sum, sub) => {
     return sum + (sub.billingCycle === "monthly" ? sub.cost : sub.cost / 12);
