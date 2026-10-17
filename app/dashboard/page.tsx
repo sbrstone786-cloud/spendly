@@ -225,7 +225,7 @@ useEffect(() => {
               </div>
               <div>
                 <p className="text-xs sm:text-sm text-gray-500">Monthly</p>
-                <p className="text-lg sm:text-2xl font-bold tracking-tight">${monthlyTotal.toFixed(0)}</p>
+                <p className="text-lg sm:text-2xl font-bold tracking-tight">${monthlyTotal.toFixed(2)}</p>
               </div>
             </div>
           </div>
@@ -237,7 +237,7 @@ useEffect(() => {
               </div>
               <div>
                 <p className="text-xs sm:text-sm text-gray-500">Yearly</p>
-                <p className="text-lg sm:text-2xl font-bold tracking-tight">${yearlyTotal.toFixed(0)}</p>
+                <p className="text-lg sm:text-2xl font-bold tracking-tight">${yearlyTotal.toFixed(2)}</p>
               </div>
             </div>
           </div>
@@ -265,7 +265,7 @@ useEffect(() => {
               </h2>
             </div>
             <p className="text-sm text-emerald-800 mb-4">
-              You’re spending <span className="font-bold">${yearlyTotal.toFixed(0)}</span> per year on SaaS.
+              You’re spending <span className="font-bold">${yearlyTotal.toFixed(2)}</span> per year on SaaS.
               Review your most expensive tools below — cancel what you don’t actively use.
             </p>
 
@@ -284,10 +284,10 @@ useEffect(() => {
                       </div>
                       <div className="text-right">
                         <div className="font-semibold text-sm text-emerald-700">
-                          ${monthlyCost.toFixed(0)}/mo
+                          ${monthlyCost.toFixed(2)}/mo
                         </div>
                         <div className="text-xs text-gray-500">
-                          ${ (monthlyCost * 12).toFixed(0) }/year
+                          ${ (monthlyCost * 12).toFixed(2) }/year
                         </div>
                       </div>
                     </div>
