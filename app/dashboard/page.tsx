@@ -39,12 +39,20 @@ export default function Dashboard() {
 
   useEffect(() => {
   const saved = localStorage.getItem("spendly-subscriptions");
-  if (saved) setSubscriptions(JSON.parse(saved));
+  if (saved) {
+    try {
+      setSubscriptions(JSON.parse(saved));
+    } catch {
+      setSubscriptions([]);
+    }
+  }
+  setIsLoaded(true);
 }, []);
 
 useEffect(() => {
+  if (!isLoaded) return;
   localStorage.setItem("spendly-subscriptions", JSON.stringify(subscriptions));
-}, [subscriptions]);
+}, [subscriptions, isLoaded]);
 
   const monthlyTotal = subscriptions.reduce((sum, sub) => {
     return sum + (sub.billingCycle === "monthly" ? sub.cost : sub.cost / 12);
