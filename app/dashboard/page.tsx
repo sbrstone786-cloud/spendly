@@ -27,6 +27,7 @@ type Subscription = {
 export default function Dashboard() {
   const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [formError, setFormError] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [formData, setFormData] = useState({
@@ -80,6 +81,7 @@ useEffect(() => {
 
   const openAddForm = () => {
     setEditingId(null);
+    setFormError("");
     setFormData({
       name: "",
       cost: "",
@@ -103,7 +105,19 @@ useEffect(() => {
   };
 
   const handleSave = () => {
-    if (!formData.name || !formData.cost || !formData.nextRenewal) return;
+  if (!formData.name.trim()) {
+    setFormError("Name zaroori hai.");
+    return;
+  }
+  if (!formData.cost || parseFloat(formData.cost) <= 0) {
+    setFormError("Sahi cost daalo (0 se zyada).");
+    return;
+  }
+  if (!formData.nextRenewal) {
+    setFormError("Next Renewal Date zaroori hai.");
+    return;
+  }
+  setFormError("");
 
     if (editingId) {
       setSubscriptions(
@@ -441,23 +455,28 @@ useEffect(() => {
               </div>
             </div>
 
-            <div className="mt-6 flex gap-3">
-              <button
-                onClick={() => {
-                  setShowForm(false);
-                  setEditingId(null);
-                }}
-                className="flex-1 border border-gray-200 rounded-xl py-2.5 text-sm font-medium hover:bg-gray-50 transition"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleSave}
-                className="flex-1 bg-black text-white rounded-xl py-2.5 text-sm font-medium hover:bg-gray-800 transition"
-              >
-                {editingId ? "Update" : "Add"}
-              </button>
-            </div>
+            {formError && (
+  <p className="mt-4 rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-sm text-red-700">{formError}</p>
+)}
+
+<div className="mt-6 flex gap-3">
+  <button
+    onClick={() => {
+      setShowForm(false);
+      setEditingId(null);
+      setFormError("");
+    }}
+    className="flex-1 border border-gray-200 rounded-xl py-2.5 text-sm font-medium hover:bg-gray-50 transition"
+  >
+    Cancel
+  </button>
+  <button
+    onClick={handleSave}
+    className="flex-1 bg-black text-white rounded-xl py-2.5 text-sm font-medium hover:bg-gray-800 transition"
+  >
+    {editingId ? "Update" : "Add"}
+  </button>
+</div>
           </div>
         </div>
       )}
