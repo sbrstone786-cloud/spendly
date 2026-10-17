@@ -61,6 +61,10 @@ export default function Pricing() {
               <li className="flex items-center gap-2 text-sm">
                 <Check size={16} className="text-green-600" />
                 Data saved in your browser
+                <li className="flex items-center gap-2 text-sm">
+                <Check size={16} className="text-green-600" />
+                Export to CSV
+              </li>
               </li>
             </ul>
 
@@ -103,10 +107,6 @@ export default function Pricing() {
               <li className="flex items-center gap-2 text-sm">
                 <Check size={16} className="text-green-600" />
                 Team sharing
-              </li>
-              <li className="flex items-center gap-2 text-sm">
-                <Check size={16} className="text-green-600" />
-                Export to CSV
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <Check size={16} className="text-green-600" />
