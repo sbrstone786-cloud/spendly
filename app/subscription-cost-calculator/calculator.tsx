@@ -48,7 +48,7 @@ export default function Calculator() {
           </div>
         ))}
       </div>
-      <p className="mt-4 text-xs text-gray-500">Example prices (Netflix $15.99, Canva $14.99, ChatGPT Plus $20) sirf demo ke liye hain.</p>
+      <p className="mt-4 text-xs text-gray-500">Example prices (Netflix $15.99, Canva $14.99, ChatGPT Plus $20) are for demo purposes only.</p>
     </div>
   );
 }
