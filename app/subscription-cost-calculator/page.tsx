@@ -36,24 +36,24 @@ export default function SubscriptionCostCalculatorPage() {
         <p className="text-sm font-medium text-blue-600">Free Calculator</p>
         <h1 className="mt-2 text-4xl font-bold tracking-tight">Subscription Cost Calculator</h1>
         <p className="mt-4 text-lg text-gray-600 max-w-2xl">
-          Apni saari subscriptions add karo aur dekho ke mahine aur saal me asal me kitna kharcha ho raha hai.
-          Example prices neeche sirf samajhane ke liye hain, apni asal prices daal kar check karo.
+          Add all your subscriptions and see exactly how much you spend per month and per year.
+Example prices below are for illustration only — enter your real prices to check your actual cost.
         </p>
         <div className="mt-10">
           <Calculator />
         </div>
         <section className="mt-14">
-          <h2 className="text-2xl font-bold">Kaise kaam karta hai?</h2>
+          <h2 className="text-2xl font-bold">How does it work?</h2>
           <ol className="mt-4 list-decimal pl-5 space-y-2 text-gray-700">
-            <li>Har subscription ka naam, cost aur billing cycle daalo.</li>
+            <li>Enter each subscription's name, cost, and billing cycle.</li>
             <li>Monthly total = monthly costs + (yearly costs ÷ 12).</li>
             <li>Yearly total = monthly total × 12.</li>
           </ol>
           <p className="mt-6">
-            Agar tum in ko track karna chahte ho to{" "}
-            <Link href="/dashboard" className="font-medium underline">Dashboard kholo</Link>
-            {" "}aur{" "}
-            <Link href="/pricing" className="font-medium underline">Pricing dekho</Link>.
+            If you want to track these subscriptions,{" "}
+          <Link href="/dashboard" className="font-medium underline">open the Dashboard</Link>
+          {" "}or{" "}
+          <Link href="/pricing" className="font-medium underline">see Pricing</Link>.
           </p>
         </section>
       </div>
