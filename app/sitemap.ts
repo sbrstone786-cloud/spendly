@@ -10,5 +10,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/saas-renewal-reminder`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/how-much-am-i-spending-on-subscriptions`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${base}/free-trial-reminder`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/how-to-cancel-a-subscription`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/subscription-audit-checklist`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/annual-vs-monthly-subscription`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/subscription-price-increase`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
   ];
 }
