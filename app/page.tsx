@@ -137,6 +137,47 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Free Guides */}
+     <section className="max-w-5xl mx-auto px-4 py-16">
+  <p className="text-sm font-medium text-blue-600">Free Guides</p>
+  <h2 className="mt-2 text-3xl font-bold tracking-tight">Free guides to cut your subscription spend</h2>
+  <p className="mt-3 text-gray-600">No signup. Read a guide, then track it free in the Spendly dashboard.</p>
+  <div className="mt-8 grid gap-4 sm:grid-cols-2">
+    <Link href="/subscription-cost-calculator" className="block rounded-2xl bg-gray-50 p-6 border">
+      <h3 className="font-semibold">Subscription Cost Calculator</h3>
+      <p className="mt-1 text-sm text-gray-600">Add your subscriptions and see your true monthly and yearly cost.</p>
+    </Link>
+    <Link href="/saas-renewal-reminder" className="block rounded-2xl bg-gray-50 p-6 border">
+      <h3 className="font-semibold">SaaS Renewal Reminder</h3>
+      <p className="mt-1 text-sm text-gray-600">Never pay for a subscription you forgot to cancel.</p>
+    </Link>
+    <Link href="/how-much-am-i-spending-on-subscriptions" className="block rounded-2xl bg-gray-50 p-6 border">
+      <h3 className="font-semibold">How Much Am I Spending on Subscriptions?</h3>
+      <p className="mt-1 text-sm text-gray-600">A 10-minute audit to find your real number.</p>
+    </Link>
+    <Link href="/free-trial-reminder" className="block rounded-2xl bg-gray-50 p-6 border">
+      <h3 className="font-semibold">Free Trial Reminder</h3>
+      <p className="mt-1 text-sm text-gray-600">Never get charged for a trial you forgot to cancel.</p>
+    </Link>
+    <Link href="/how-to-cancel-a-subscription" className="block rounded-2xl bg-gray-50 p-6 border">
+      <h3 className="font-semibold">How to Cancel a Subscription</h3>
+      <p className="mt-1 text-sm text-gray-600">The reliable way to cancel, even when the button is hidden.</p>
+    </Link>
+    <Link href="/subscription-audit-checklist" className="block rounded-2xl bg-gray-50 p-6 border">
+      <h3 className="font-semibold">Subscription Audit Checklist</h3>
+      <p className="mt-1 text-sm text-gray-600">Find every wasted charge in about 15 minutes.</p>
+    </Link>
+    <Link href="/annual-vs-monthly-subscription" className="block rounded-2xl bg-gray-50 p-6 border">
+      <h3 className="font-semibold">Annual vs Monthly Subscription</h3>
+      <p className="mt-1 text-sm text-gray-600">The breakeven math: when yearly is cheaper, and when it is not.</p>
+    </Link>
+    <Link href="/subscription-price-increase" className="block rounded-2xl bg-gray-50 p-6 border">
+      <h3 className="font-semibold">Subscription Price Increase?</h3>
+      <p className="mt-1 text-sm text-gray-600">Decide in 5 minutes: keep, downgrade, pause, or cancel.</p>
+    </Link>
+    </div>
+    </section>
+
       {/* CTA */}
       <section className="max-w-5xl mx-auto px-4 py-20 text-center">
         <h2 className="text-3xl font-bold tracking-tight">
