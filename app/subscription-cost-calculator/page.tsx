@@ -49,13 +49,17 @@ Example prices below are for illustration only — enter your real prices to che
             <li>Monthly total = monthly costs + (yearly costs ÷ 12).</li>
             <li>Yearly total = monthly total × 12.</li>
           </ol>
-          <p className="mt-6">
-            If you want to track these subscriptions,{" "}
-          <Link href="/dashboard" className="font-medium underline">open the Dashboard</Link>
-          {" "}or{" "}
-          <Link href="/pricing" className="font-medium underline">see Pricing</Link>.
-          </p>
-        </section>
+            <p className="mt-6">
+    If you want to track these subscriptions,{" "}
+  <Link href="/dashboard" className="font-medium underline">open the Dashboard</Link>
+  {" "}or{" "}
+  <Link href="/pricing" className="font-medium underline">see Pricing</Link>.
+  </p>
+  <p className="mt-4 text-gray-700">
+    Comparing yearly vs monthly billing? See{" "}
+    <Link href="/annual-vs-monthly-subscription" className="font-medium underline">annual vs monthly subscription: which is cheaper</Link>.
+  </p>
+</section>
       </div>
     </main>
   );
