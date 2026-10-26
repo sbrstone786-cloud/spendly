@@ -196,9 +196,14 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t py-8 text-center text-sm text-gray-500">
-        © 2026 Spendly. Built to stop SaaS waste.
-      </footer>
+<footer className="border-t py-8 text-center text-sm text-gray-500">
+  <div className="flex justify-center gap-6 mb-3">
+    <Link href="/about" className="hover:text-gray-900">About</Link>
+    <Link href="/contact" className="hover:text-gray-900">Contact</Link>
+    <Link href="/pricing" className="hover:text-gray-900">Pricing</Link>
+  </div>
+  © 2026 Spendly. Built to stop SaaS waste.
+</footer>
     </div>
   );
 }
