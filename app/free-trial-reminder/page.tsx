@@ -89,10 +89,10 @@ export default function FreeTrialReminderPage() {
             <div>
               <h3 className="text-lg font-semibold">1. Cancel right after signing up</h3>
               <p className="mt-1 text-gray-700">
-                The simplest reminder is no reminder at all: cancel the trial
-                immediately after starting it. Most services keep your access until
-                the trial ends — and if you love it, you can always resubscribe.
-              </p>
+  The simplest reminder is no reminder at all: <Link href="/how-to-cancel-a-subscription" className="font-medium underline">cancel</Link> the trial
+  immediately after starting it. Most services keep your access until
+  the trial ends — and if you love it, you can always resubscribe.
+</p>
             </div>
             <div>
               <h3 className="text-lg font-semibold">2. Calendar reminder 2 days before</h3>
