@@ -200,6 +200,8 @@ export default function Home() {
   <div className="flex justify-center gap-6 mb-3">
     <Link href="/about" className="hover:text-gray-900">About</Link>
     <Link href="/contact" className="hover:text-gray-900">Contact</Link>
+    <Link href="/privacy" className="hover:text-gray-900">Privacy</Link>
+    <Link href="/terms" className="hover:text-gray-900">Terms</Link>
     <Link href="/pricing" className="hover:text-gray-900">Pricing</Link>
   </div>
   © 2026 Spendly. Built to stop SaaS waste.
