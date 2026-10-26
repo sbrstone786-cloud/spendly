@@ -127,9 +127,9 @@ export default function SubscriptionSpendingPage() {
         <section className="mt-10">
           <h2 className="text-2xl font-bold">What to do with your number</h2>
           <ol className="mt-4 list-decimal pl-5 space-y-2 text-gray-700">
-            <li>Cancel anything you haven't used in 30 days — today, not "later".</li>
+            <li><Link href="/how-to-cancel-a-subscription" className="font-medium underline">Cancel</Link> anything you haven't used in 30 days — today, not "later".</li>
             <li>Downgrade plans where you use 20% of the features.</li>
-            <li>Switch to yearly billing only for tools you're sure to keep.</li>
+            <li>Switch to <Link href="/annual-vs-monthly-subscription" className="font-medium underline">yearly billing</Link> only for tools you're sure to keep.</li>
             <li>
               Track everything going forward in the{" "}
               <Link href="/dashboard" className="font-medium underline">
@@ -138,6 +138,7 @@ export default function SubscriptionSpendingPage() {
               — free, no signup, data stays in your browser.
             </li>
           </ol>
+          <p className="mt-4 text-gray-700">Want it as a tick-box list? Use the <Link href="/subscription-audit-checklist" className="font-medium underline">Subscription Audit Checklist</Link>.</p>
         </section>
 
         <section className="mt-10 rounded-2xl bg-gray-50 p-6">
