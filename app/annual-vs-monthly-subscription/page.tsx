@@ -119,6 +119,14 @@ export default function AnnualVsMonthlyPage() {
             a week before the charge — annual plans are the easiest to forget
             because they only bill once a year.
           </p>
+          <p className="mt-4 text-gray-700">
+  And if the reason you are reconsidering is a price rise, see what to do
+  when a{" "}
+  <Link href="/subscription-price-increase" className="font-medium underline">
+    subscription price increases
+  </Link>{" "}
+  before you switch.
+</p>
         </section>
 
         <section className="mt-10 rounded-2xl bg-gray-50 p-6">
