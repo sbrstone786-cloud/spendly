@@ -172,6 +172,13 @@ export default function CancelSubscriptionGuidePage() {
               </Link>{" "}
               so you never need this guide again.
             </li>
+            <li>
+  If a price rise is why you cancelled, see what to do when a{" "}
+  <Link href="/subscription-price-increase" className="font-medium underline">
+    subscription price increases
+  </Link>
+  .
+</li>
           </ul>
         </section>
 
