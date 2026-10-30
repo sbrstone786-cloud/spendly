@@ -66,6 +66,28 @@ export default function Home() {
         </p>
       </section>
 
+      {/* Facts band */}
+<section className="max-w-5xl mx-auto px-4 py-8">
+  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-gray-50 border rounded-2xl px-6 py-8 text-center">
+    <div>
+      <p className="font-semibold text-lg">100% Free</p>
+      <p className="mt-1 text-gray-600 text-sm">No hidden charges, ever</p>
+    </div>
+    <div>
+      <p className="font-semibold text-lg">No Signup</p>
+      <p className="mt-1 text-gray-600 text-sm">Start tracking in seconds</p>
+    </div>
+    <div>
+      <p className="font-semibold text-lg">Private by Design</p>
+      <p className="mt-1 text-gray-600 text-sm">Your data stays in your browser</p>
+    </div>
+    <div>
+      <p className="font-semibold text-lg">8 Free Guides</p>
+      <p className="mt-1 text-gray-600 text-sm">Learn to cut subscription costs</p>
+    </div>
+  </div>
+</section>
+
       {/* Features */}
       <section className="max-w-5xl mx-auto px-4 py-16">
         <div className="grid md:grid-cols-3 gap-6">
