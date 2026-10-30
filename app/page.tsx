@@ -255,6 +255,57 @@ export default function Home() {
   </div>
 </section>
 
+{/* FAQ */}
+<section className="max-w-5xl mx-auto px-4 py-16">
+  <h2 className="text-3xl font-bold text-center">Frequently asked questions</h2>
+  <div className="mt-10 grid md:grid-cols-2 gap-6">
+    <div className="bg-gray-50 rounded-2xl p-6 border">
+      <h3 className="font-semibold text-lg">Is Spendly really free?</h3>
+      <p className="mt-2 text-gray-600 text-sm leading-relaxed">
+        Yes. The subscription tracker, cost overview, renewal view and CSV export are
+        completely free, with no hidden charges. A Pro plan with extra features is
+        coming soon, but the free plan will stay free.
+      </p>
+    </div>
+    <div className="bg-gray-50 rounded-2xl p-6 border">
+      <h3 className="font-semibold text-lg">Do I need to create an account?</h3>
+      <p className="mt-2 text-gray-600 text-sm leading-relaxed">
+        No. There is no signup and no login. Just open the dashboard, add your
+        subscriptions, and start tracking right away.
+      </p>
+    </div>
+    <div className="bg-gray-50 rounded-2xl p-6 border">
+      <h3 className="font-semibold text-lg">Is my subscription data private?</h3>
+      <p className="mt-2 text-gray-600 text-sm leading-relaxed">
+        Yes. Your data is saved only in your own browser on your own device. It is
+        never sent to a server, and we cannot see your subscriptions or spending.
+      </p>
+    </div>
+    <div className="bg-gray-50 rounded-2xl p-6 border">
+      <h3 className="font-semibold text-lg">What can I track with Spendly?</h3>
+      <p className="mt-2 text-gray-600 text-sm leading-relaxed">
+        Any recurring subscription: SaaS tools, streaming services, apps, hosting,
+        domains and memberships. Add the name, cost, billing cycle and renewal date,
+        and Spendly shows your total monthly and yearly spend.
+      </p>
+    </div>
+    <div className="bg-gray-50 rounded-2xl p-6 border">
+      <h3 className="font-semibold text-lg">How do renewal reminders work?</h3>
+      <p className="mt-2 text-gray-600 text-sm leading-relaxed">
+        Your dashboard shows every subscription renewing in the next 30 days, so a
+        charge never catches you by surprise and you can cancel in time.
+      </p>
+    </div>
+    <div className="bg-gray-50 rounded-2xl p-6 border">
+      <h3 className="font-semibold text-lg">Can I export my data?</h3>
+      <p className="mt-2 text-gray-600 text-sm leading-relaxed">
+        Yes. You can export your subscription list to CSV for free, any time, from
+        the dashboard or the pricing page.
+      </p>
+    </div>
+  </div>
+</section>
+
       {/* CTA */}
       <section className="max-w-5xl mx-auto px-4 py-20 text-center">
         <h2 className="text-3xl font-bold tracking-tight">
