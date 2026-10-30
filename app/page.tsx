@@ -200,6 +200,61 @@ export default function Home() {
     </div>
     </section>
 
+    {/* Pricing strip */}
+<section className="max-w-5xl mx-auto px-4 py-16">
+  <h2 className="text-3xl font-bold text-center">Simple pricing</h2>
+  <p className="mt-3 text-center text-gray-600">
+    Start free. Upgrade when you need more power.
+  </p>
+  <div className="mt-10 grid md:grid-cols-2 gap-6">
+    <div className="bg-gray-50 rounded-2xl p-6 border">
+      <h3 className="font-semibold text-lg">Free</h3>
+      <p className="mt-2">
+        <span className="text-3xl font-bold">$0</span>
+        <span className="text-gray-600"> /month</span>
+      </p>
+      <ul className="mt-4 space-y-2 text-sm text-gray-600">
+        <li>Track unlimited subscriptions</li>
+        <li>Monthly &amp; yearly cost overview</li>
+        <li>Upcoming renewal alerts</li>
+        <li>Data saved in your browser</li>
+        <li>Export to CSV</li>
+      </ul>
+      <Link
+        href="/dashboard"
+        className="mt-6 inline-block bg-blue-600 text-white px-5 py-2.5 rounded-xl font-medium"
+      >
+        Start Free
+      </Link>
+    </div>
+    <div className="bg-gray-50 rounded-2xl p-6 border">
+      <div className="flex items-center gap-3">
+        <h3 className="font-semibold text-lg">Pro</h3>
+        <span className="bg-blue-100 text-blue-600 text-xs font-medium px-2.5 py-1 rounded-full">
+          Coming Soon
+        </span>
+      </div>
+      <p className="mt-2">
+        <span className="text-3xl font-bold">$9</span>
+        <span className="text-gray-600"> /month</span>
+      </p>
+      <ul className="mt-4 space-y-2 text-sm text-gray-600">
+        <li>Everything in Free</li>
+        <li>Cloud sync across devices</li>
+        <li>Email renewal reminders</li>
+        <li>Team sharing</li>
+        <li>Priority support</li>
+      </ul>
+      <Link
+        href="/pricing"
+        className="mt-6 inline-block border px-5 py-2.5 rounded-xl font-medium"
+      >
+        See Pricing
+      </Link>
+    </div>
+  </div>
+</section>
+
       {/* CTA */}
       <section className="max-w-5xl mx-auto px-4 py-20 text-center">
         <h2 className="text-3xl font-bold tracking-tight">
