@@ -66,6 +66,15 @@ export default function Home() {
         </p>
       </section>
 
+      {/* Dashboard preview */}
+<section className="max-w-4xl mx-auto px-4 pb-8">
+  <img
+    src="/dashboard-preview.png"
+    alt="Spendly dashboard showing monthly and yearly subscription costs, savings insight and upcoming renewals"
+    className="w-full rounded-2xl border shadow-lg"
+  />
+</section>
+
       {/* Facts band */}
 <section className="max-w-5xl mx-auto px-4 py-8">
   <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-gray-50 border rounded-2xl px-6 py-8 text-center">
