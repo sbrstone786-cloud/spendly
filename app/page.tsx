@@ -264,6 +264,67 @@ export default function Home() {
   </div>
 </section>
 
+{/* FAQ schema */}
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Is Spendly really free?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. The subscription tracker, cost overview, renewal view and CSV export are completely free, with no hidden charges. A Pro plan with extra features is coming soon, but the free plan will stay free.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do I need to create an account?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. There is no signup and no login. Just open the dashboard, add your subscriptions, and start tracking right away.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Is my subscription data private?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. Your data is saved only in your own browser on your own device. It is never sent to a server, and we cannot see your subscriptions or spending.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What can I track with Spendly?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Any recurring subscription: SaaS tools, streaming services, apps, hosting, domains and memberships. Add the name, cost, billing cycle and renewal date, and Spendly shows your total monthly and yearly spend.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How do renewal reminders work?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Your dashboard shows every subscription renewing in the next 30 days, so a charge never catches you by surprise and you can cancel in time.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I export my data?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. You can export your subscription list to CSV for free, any time, from the dashboard or the pricing page.",
+          },
+        },
+      ],
+    }),
+  }}
+/>
+
 {/* FAQ */}
 <section className="max-w-5xl mx-auto px-4 py-16">
   <h2 className="text-3xl font-bold text-center">Frequently asked questions</h2>
