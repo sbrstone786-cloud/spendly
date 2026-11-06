@@ -53,11 +53,12 @@ Example prices below are for illustration only — enter your real prices to che
     If you want to track these subscriptions,{" "}
   <Link href="/dashboard" className="font-medium underline">open the Dashboard</Link>
   {" "}or{" "}
-  <Link href="/pricing" className="font-medium underline">see Pricing</Link>.
+      <Link href="/annual-vs-monthly-subscription" className="font-medium underline">annual vs monthly subscription: which is cheaper</Link>.
   </p>
   <p className="mt-4 text-gray-700">
-    Comparing yearly vs monthly billing? See{" "}
-    <Link href="/annual-vs-monthly-subscription" className="font-medium underline">annual vs monthly subscription: which is cheaper</Link>.
+    Planning early retirement? See{" "}
+    <Link href="/fire-calculator" className="font-medium underline">your FIRE number</Link>{" "}
+    — the amount you need invested to retire, based on your real yearly spending.
   </p>
 </section>
       </div>
