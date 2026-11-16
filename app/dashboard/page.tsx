@@ -216,6 +216,7 @@ useEffect(() => {
       </nav>
 
       <div className="max-w-5xl mx-auto px-4 py-6 sm:py-8">
+        <p className="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">Your data is saved only in this browser. If you clear your browser data it will be lost — export a CSV backup now and then to stay safe.</p> 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
           <div className="bg-white p-3 sm:p-5 rounded-xl sm:rounded-2xl border shadow-sm">
