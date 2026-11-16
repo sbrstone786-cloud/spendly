@@ -91,7 +91,7 @@ export default function Home() {
       <p className="mt-1 text-gray-600 text-sm">Your data stays in your browser</p>
     </div>
     <div>
-      <p className="font-semibold text-lg">8 Free Guides</p>
+      <p className="font-semibold text-lg">10 Free Tools & Guides</p>
       <p className="mt-1 text-gray-600 text-sm">Learn to cut subscription costs</p>
     </div>
   </div>
@@ -168,9 +168,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Free Guides */}
+      {/* Free Tools & Guides */}
      <section className="max-w-5xl mx-auto px-4 py-16">
-  <p className="text-sm font-medium text-blue-600">Free Guides</p>
+  <p className="text-sm font-medium text-blue-600">Free Tools & Guides</p>
   <h2 className="mt-2 text-3xl font-bold tracking-tight">Free guides to cut your subscription spend</h2>
   <p className="mt-3 text-gray-600">No signup. Read a guide, then track it free in the Spendly dashboard.</p>
   <div className="mt-8 grid gap-4 sm:grid-cols-2">
