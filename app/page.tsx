@@ -169,11 +169,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Free Tools & Guides */}
+      {/* Money Calculators */}
      <section className="max-w-5xl mx-auto px-4 py-16">
-  <p className="text-sm font-medium text-blue-600">Free Tools & Guides</p>
-  <h2 className="mt-2 text-3xl font-bold tracking-tight">Free guides to cut your subscription spend</h2>
-  <p className="mt-3 text-gray-600">No signup. Read a guide, then track it free in the Spendly dashboard.</p>
+  <p className="text-sm font-medium text-blue-600">Money Calculators</p>
+  <h2 className="mt-2 text-3xl font-bold tracking-tight">Money Calculators</h2>
+  <p className="mt-3 text-gray-600">No signup. Calculate your costs, then track them free in the Spendly dashboard.</p>
   <div className="mt-8 grid gap-4 sm:grid-cols-2">
     <Link href="/subscription-cost-calculator" className="block rounded-2xl bg-gray-50 p-6 border">
   <h3 className="font-semibold">Subscription Cost Calculator</h3>
@@ -187,7 +187,7 @@ export default function Home() {
   <h3 className="font-semibold">Coast FIRE Calculator</h3>
   <p className="mt-1 text-sm text-gray-600">The amount that grows to your FIRE number by retirement — with no more saving.</p>
 </Link>
-    <Link href="/saas-renewal-reminder" className="block rounded-2xl bg-gray-50 p-6 border">
+            </div>       </section>        {/* Free Guides */}       <section className="max-w-5xl mx-auto px-4 py-16">         <p className="text-sm font-medium text-blue-600">Free Guides</p>         <h2 className="mt-2 text-3xl font-bold tracking-tight">Free Guides</h2>         <p className="mt-3 text-gray-600">No signup. Read a guide, then track it free in the Spendly dashboard.</p>         <div className="mt-8 grid gap-4 sm:grid-cols-2">         <Link href="/saas-renewal-reminder" className="block rounded-2xl bg-gray-50 p-6 border">
       <h3 className="font-semibold">SaaS Renewal Reminder</h3>
       <p className="mt-1 text-sm text-gray-600">Never pay for a subscription you forgot to cancel.</p>
     </Link>
