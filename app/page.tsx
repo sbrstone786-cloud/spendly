@@ -233,7 +233,7 @@ export default function Home() {
       <ul className="mt-4 space-y-2 text-sm text-gray-600">
         <li>Track unlimited subscriptions</li>
         <li>Monthly &amp; yearly cost overview</li>
-        <li>Upcoming renewal alerts</li>
+        <li>Renewal view on your dashboard</li>
         <li>Data saved in your browser</li>
         <li>Export to CSV</li>
       </ul>
