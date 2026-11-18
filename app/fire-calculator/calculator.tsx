@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { calculateFire, round1, roundDollar } from "./fireMath";
+import Link from "next/link";
 
 function money(n: number): string {
   return "$" + roundDollar(n).toLocaleString("en-US");
