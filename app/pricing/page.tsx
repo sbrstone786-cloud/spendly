@@ -70,7 +70,7 @@ export default function Pricing() {
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <Check size={16} className="text-green-600" />
-                Upcoming renewal alerts
+                Renewal view on your dashboard
               </li>
               <li className="flex items-center gap-2 text-sm">
                 <Check size={16} className="text-green-600" />
