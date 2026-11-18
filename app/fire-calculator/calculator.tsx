@@ -122,7 +122,7 @@ export default function FireCalculator() {
       </div>
       <div className="mt-6 rounded-2xl border bg-gray-50 p-6 text-center">
       <p className="text-sm text-gray-600">Cutting your expenses is the fastest way to lower your FIRE number. First step: track your subscriptions.</p>
-      <Link href="/dashboard" className="mt-4 inline-flex items-center justify-center gap-2 bg-black text-white font-medium px-6 py-3 rounded-xl hover:bg-gray-800 transition">Track your subscriptions — free</Link</div>
+      <Link href="/dashboard" className="mt-4 inline-flex items-center justify-center gap-2 bg-black text-white font-medium px-6 py-3 rounded-xl hover:bg-gray-800 transition">Track your subscriptions — free</Link></div>
     </div>
   );
 }
