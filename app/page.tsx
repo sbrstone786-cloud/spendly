@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Wallet, BarChart3, Bell, PiggyBank, ArrowRight } from "lucide-react";
+import ProWaitlistForm from "./components/ProWaitlistForm";
 
 export default function Home() {
   return (
@@ -262,8 +263,9 @@ export default function Home() {
         <li>Team sharing</li>
         <li>Priority support</li>
       </ul>
+      <ProWaitlistForm />
       <Link
-        href="/pricing"
+      href="/pricing"
         className="mt-6 inline-block border px-5 py-2.5 rounded-xl font-medium"
       >
         See Pricing
