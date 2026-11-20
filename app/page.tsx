@@ -273,12 +273,6 @@ export default function Home() {
         <li>Priority support</li>
       </ul>
       <ProWaitlistForm />
-      <Link
-      href="/pricing"
-        className="mt-6 inline-block border px-5 py-2.5 rounded-xl font-medium"
-      >
-        See Pricing
-      </Link>
     </div>
   </div>
 </section>
